@@ -9,15 +9,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# unidades & constantes
+# unidades
 cm = 1e-2 #m
 mm = 1e-3 #m
 
+# constantes
 c = 3e8 #m/s
 pi = np.pi
 
 
-
+# Classe principal
 class Solver:
    def __init__ (self,N,F,Lx,Ly,unit=mm):
        self.unit = unit
@@ -36,6 +37,8 @@ class Solver:
        print(self.lamb)
        print(self.unit)
        print(self.dx)
+         
+   # Calcula o angulo de cada elemento com base no angulo do feixe desejado
    def setAngle(self,ph):
        self.p0 = ph
        self.ph = (2*pi/self.lamb*self.lamb/2*np.sin(ph/180*pi))*180/pi
@@ -47,7 +50,6 @@ class Solver:
     
        # soma de todas as antenas 
        self.tp = np.sum(self.pwr,axis=0)
-
    def Plot(self,num=25):
        plt.ion()
        plt.clf()
@@ -65,8 +67,7 @@ class Solver:
            self.ax.annotate(label, xy=xylabel, ha='center', va='center')
 
        # plota as antenas (ponto vermelho)
-       
-       #[plt.plot(q,0,'ro') for p,q in self.phases]
+       [plt.plot(q,0,'ro') for p,q in self.phases]
       
        plt.title(f'Ângulo desejado: {self.p0:.1f}',fontsize=20)
        
@@ -81,8 +82,11 @@ class Solver:
        plt.show()
        plt.pause(0.001)
 
+      
+# Cria um solver com 8 antenas, 1.79 GHz, grade 20x20
 fdtd = Solver(8, 1.7e9, 20, 20)
 
+# main loop
 for i in range(0,360,1):
    fdtd.setAngle(i)
    fdtd.Simulate()
