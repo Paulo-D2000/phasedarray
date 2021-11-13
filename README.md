@@ -9,6 +9,8 @@ example:
 fdtd = Solver(8, 1.7e9, 20, 20)
 
 # main loop
+
+
 for i in range(0,360,1):
    fdtd.setAngle(i)
    fdtd.Simulate()
