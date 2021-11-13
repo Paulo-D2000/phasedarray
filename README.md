@@ -1,7 +1,8 @@
 # phasedarray
 Python - Phased Array sim.
 
-![image](https://user-images.githubusercontent.com/58897843/141657605-c5da0072-cffd-416e-9f33-741b6cf58d45.png)
+![image](https://user-images.githubusercontent.com/58897843/141658053-4b2cb75f-d344-4d3c-9eaa-75fd925bad3d.png)
+
 
 example: 
 
